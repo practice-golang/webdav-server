@@ -5,8 +5,15 @@ A simple webdav server with basic auth using Golang.
 * keygen : OpenSSL to create certificates
 * pem : Cert files in here
 * storage : Service storage
-* win_conn_example : Batch files for connection
+* win_conn_example : Batch files for connection in windows explorer
 * server.go : WebDAV server
+
+## Build
+* Download repo and run ```go build``` at root of downloaded repo
+
+## Access Control
+* Please modify or expand codes after comment - ```Check credential``` in ```server.go```
+* With current source, you may cannnot enter to ```/webdav/folder2```
 
 ## Create certificates
 Via HTTPS, you should create or have your own certificates.
@@ -28,7 +35,7 @@ BasicAuthLevel to 2
 * Via HTTPS
   * See files in win_conn_example
 
-## Run or Open in Other OS
+## Run or open in other OS
 I hope that you can do it yourself well. ^_^
 
 ## License

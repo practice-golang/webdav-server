@@ -5,6 +5,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"strings"
 
 	"golang.org/x/net/webdav"
 )
@@ -13,10 +14,11 @@ func main() {
 	storagePath := "./storage"
 	certPath := "./pem/cert.pem"
 	keyPath := "./pem/key.pem"
+	pathPrefix := "/webdav"
 
 	// When use "/" not "/webdav" in http.HandleFunc, srv.Prefix should be removed.
 	srv := &webdav.Handler{
-		Prefix:     "/webdav",
+		Prefix:     pathPrefix,
 		FileSystem: webdav.Dir(storagePath),
 		LockSystem: webdav.NewMemLS(),
 		Logger: func(r *http.Request, err error) {
@@ -28,17 +30,22 @@ func main() {
 		},
 	}
 
-	// Slash must be inputed to end of path in http.HandleFunc
-	http.HandleFunc("/webdav/", func(w http.ResponseWriter, r *http.Request) {
-		// http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+	// Trailing slash must be inputed to end of path in http.HandleFunc
+	http.HandleFunc(pathPrefix+"/", func(w http.ResponseWriter, r *http.Request) {
 		username, password, _ := r.BasicAuth()
 
+		// Check credential
 		if username == "davuser" && password == "pass" {
+			// User control at here, if required.
+			if strings.Contains(r.URL.String(), pathPrefix+"/folder2") {
+				fmt.Println("Here, folder2 is restricted. redirect or say sorry to this user.")
+				return
+			}
 			srv.ServeHTTP(w, r)
 			return
 		}
 
-		w.Header().Set("WWW-Authenticate", `Basic realm="BASIC REALM"`)
+		w.Header().Set("WWW-Authenticate", `Basic realm="BASIC WebDAV REALM"`)
 		w.WriteHeader(401)
 		w.Write([]byte("401 Unauthorized\n"))
 	})
