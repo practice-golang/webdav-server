@@ -14,7 +14,7 @@ func main() {
 	certPath := "./pem/cert.pem"
 	keyPath := "./pem/key.pem"
 
-	// When use "/" not "/webdav" at http.HandleFunc, srv.Prefix should removed.
+	// When use "/" not "/webdav" in http.HandleFunc, srv.Prefix should be removed.
 	srv := &webdav.Handler{
 		Prefix:     "/webdav",
 		FileSystem: webdav.Dir(storagePath),
