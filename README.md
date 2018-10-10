@@ -12,7 +12,7 @@ move *.pem ../pem/
 ```
 
 ## Open in MS-Windows Explorer
-* If you use ```RMB > Map Network Drive...``` in explorer window, You should enable <b>Connect using different credentials</b>.
+* If you use ```RMB > Map Network Drive...``` in explorer window, You should enable ```Connect using different credentials```.
 * Via HTTP, you should modify set in registry as below.
 ```
 regedit > HKLM\SYSTEM\CurrentControlSet\Services\WebClient\Parameters
