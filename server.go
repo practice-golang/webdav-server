@@ -28,6 +28,7 @@ func main() {
 		},
 	}
 
+	// Slash must be inputed to end of path in http.HandleFunc
 	http.HandleFunc("/webdav/", func(w http.ResponseWriter, r *http.Request) {
 		// http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		username, password, _ := r.BasicAuth()
