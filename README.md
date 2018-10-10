@@ -19,7 +19,7 @@ move *.pem ../pem/
 ```
 
 ## Open in MS-Windows Explorer
-* If you use ```RMB > Map Network Drive...``` in explorer window, You should enable ```Connect using different credentials```.
+* If you use ```RMB > Map Network Drive...``` in explorer window, You should enable ```Connect using different credentials```. Better to use command in ```win_conn_example/add_webdav.cmd```
 * Via HTTP, you should modify set in registry as below.
 ```
 regedit > HKLM\SYSTEM\CurrentControlSet\Services\WebClient\Parameters
