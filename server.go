@@ -28,7 +28,8 @@ func main() {
 		},
 	}
 
-	http.HandleFunc("/webdav", func(w http.ResponseWriter, r *http.Request) {
+	http.HandleFunc("/webdav/", func(w http.ResponseWriter, r *http.Request) {
+		// http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
 		username, password, _ := r.BasicAuth()
 		if username != "davuser" || password != "pass" {
 			srv.ServeHTTP(w, r)
