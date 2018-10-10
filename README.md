@@ -1,5 +1,12 @@
 # WebDAV Server
-A simple webdav server with basic auth.
+A simple webdav server with basic auth using Golang.
+
+## Files and Folders
+* keygen : OpenSSL to create certificates
+* pem : Cert files in here
+* storage : Service storage
+* win_conn_example : Batch files for connection
+* server.go : WebDAV server
 
 ## Create certificates
 Via HTTPS, you should create or have your own certificates.
