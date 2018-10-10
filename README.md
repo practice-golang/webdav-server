@@ -17,7 +17,7 @@ move *.pem ../pem/
 regedit > HKLM\SYSTEM\CurrentControlSet\Services\WebClient\Parameters
 BasicAuthLevel to 2
 ```
-* Via HTTPS, you should create or have your own certificates.
+* Via HTTPS
   * See files in win_conn_example
 
 ## Run or Open in Other OS
