@@ -41,6 +41,10 @@ func main() {
 				fmt.Println("Here, folder2 is restricted. redirect or say sorry to this user.")
 				return
 			}
+			
+			// Unlimit timeout
+			w.Header().Set("Timeout", "99999999")
+			
 			srv.ServeHTTP(w, r)
 			return
 		}
